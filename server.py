@@ -99,7 +99,7 @@ def save_link(link, filename):
     current_time = datetime.now() # + timedelta(hours=2)  # para ajustar timezone
     current_time_str = current_time.strftime("%A %e, %B  %H:%M")
     h1_text = fetch_h1_text(link)
-    with open(filename, 'a') as file:
+    with open(filename, 'wb') as file:
         file.write(f"{current_time_str} — {h1_text} > {link}\n")
 
 # scheduler
