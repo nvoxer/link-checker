@@ -100,7 +100,7 @@ def save_link(link, filename):
     current_time_str = current_time.strftime("%A %e, %B  %H:%M")
     h1_text = fetch_h1_text(link)
     with open(filename, 'a') as file:
-        file.write(f"{current_time_str} — {h1_text} > {link}\n")
+        file.write(f"{current_time_str} — {h1_text} < {link}\n")
 
 # scheduler
 scheduler = BackgroundScheduler(daemon=True)
@@ -124,7 +124,7 @@ def read_links_from_file():
 @app.route('/')
 def index():
     links = read_links_from_file()
-    links_with_datetime = [link.split(' > ') for link in links]
+    links_with_datetime = [link.split(' < ') for link in links]
     return render_template('index.html', links=links_with_datetime)
 
 if __name__ == '__main__':
